@@ -178,11 +178,11 @@ int main() {
                       }
                   }
               } else if(car_lane == (lane -1) ){ // car is in left of my lane
-                  if(((check_car_s - car_s) < 30) &&( (check_car_s - car_s) > -15)){
+                  if(((check_car_s - car_s) < 30) &&( (check_car_s - car_s) > -10)){
                       car_left = true;
                   }
               } else if(car_lane  == (lane +1)){ // car is in right of my lane
-                  if(((check_car_s - car_s) < 30) && ((check_car_s - car_s) > -15)) {
+                  if(((check_car_s - car_s) < 30) && ((check_car_s - car_s) > -10)) {
                       car_right = true;
                   }
               }
@@ -195,17 +195,11 @@ int main() {
               } else if((car_right == false)&&(lane < 2)){
                   lane += 1;
               }
-          } else {
-              if(lane != 1){
-                  if(((lane == 0)&&(car_right == false)) || ((lane == 2)&&(car_left == false))){
-                      lane = 1;
-                  }
-              }
-          }
+          } 
       
           
           double dvel = 0.0;
-          const double MAX_SPEED = 49.5;
+          const double MAX_SPEED = 49.8;
           const double MAX_ACC = .224;
           double target_speed = MAX_SPEED;
           

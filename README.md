@@ -1,5 +1,21 @@
 # CarND-Path-Planning-Project
 Self-Driving Car Engineer Nanodegree Program
+
+## Reflection
+First, find out which lane the other cars are running at by interpreting the sensor_fusion data. 
+When there are cars running on my current lane, the cloest car's speed is recorded to limit my car velocity. For the cars running on side lanes, only the cars within range from 30 ahead and 10 behind are focused, which are considered as there is car on the side lane. This information will guide for decision of lane changing. For example, if there is car running on the current lane ahead and there is no car running on the side lane, lane changing to the empty side lane will take place. 
+When there is no car ahead on the current lane, maximum speed 49.8 will be set as my car velocity limit.
+
+To create a planned path, the following steps are followed:
+1. create a list of widely spaced(x,y) waypoints, evenly spaced at 30m
+2. reference x,y yaw states, 
+   Use two points that make the path tangent to the previous path's end point
+3. In Frenet add evenly 30m spaced points ahead of the starting reference
+4. create a spline
+5. Calculate how to break up spline points so that we travel at our desired refefence velocity
+6. Fill up to the rest of our path planner after filling it with previous poits, here we will always output 50 pints.
+7. rotate back to normal after rotating it earlier
+Many code snippet from lectures are used.
    
 ### Simulator.
 You can download the Term3 Simulator which contains the Path Planning Project from the [releases tab (https://github.com/udacity/self-driving-car-sim/releases/tag/T3_v1.2).  
